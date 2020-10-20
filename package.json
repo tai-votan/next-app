@@ -17,15 +17,17 @@
     }
   },
   "lint-staged": {
-    ".js": [
-      "npm run lint:fix",
-      "npm run lint"
-    ],
-    "*.(js|css)": [
-      "prettier --write",
-      "git add"
+    "**/*.less": "stylelint --syntax less",
+    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
     ]
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
   "dependencies": {
     "@ant-design/icons": "4.2.2",
     "@next/bundle-analyzer": "^9.5.5",
@@ -65,6 +67,8 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.1.2",
-    "prettier": "2.1.2"
+    "lint-staged": "10.4.2",
+    "prettier": "2.1.2",
+    "stylelint": "13.7.2"
   }
 }
