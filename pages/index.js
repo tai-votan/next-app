@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { Row, Col } from "antd";
 
 export default function Home() {
   return (
