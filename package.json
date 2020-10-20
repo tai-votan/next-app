@@ -6,7 +6,25 @@
     "analyze": "cross-env ANALYZE=true next build",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint:fix": "eslint src/*.js --fix",
+    "lint": "eslint src/*.js",
+    "lint-staged": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    ".js": [
+      "npm run lint:fix",
+      "npm run lint"
+    ],
+    "*.(js|css)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "4.2.2",
@@ -39,9 +57,12 @@
     "babel-plugin-module-resolver": "4.0.0",
     "eslint": "7.11.0",
     "eslint-config-airbnb": "18.2.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-prettier": "6.13.0",
     "eslint-import-resolver-babel-module": "5.2.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.1.2",
     "prettier": "2.1.2"

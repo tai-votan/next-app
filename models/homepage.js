@@ -1,18 +1,18 @@
-import { getFeature } from "services/information";
+import { latestArticle } from "services/home";
 
 const model = {
   namespace: "index",
   state: {
-    feature: [],
+    latest: [],
   },
 
   effects: {
-    *login({ payload }, { call, put, select }) {
-      const { data } = yield call(getFeature, payload);
+    *fetchLastestArticle({ payload }, { call, put, select }) {
+      const { data } = yield call(latestArticle, payload);
       const { feature } = yield select(({ index }) => index);
       yield put({
         type: "save",
-        payload: { feature: feature.concat(data.docs) },
+        payload: { latest: feature.concat(data.docs) },
       });
     },
   },
