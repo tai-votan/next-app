@@ -26,21 +26,20 @@ module.exports = {
   ],
   rules: {
     "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
-    'react/react-in-jsx-scope': 'off',
-    'jsx-a11y/anchor-is-valid': [
-      'error',
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
       {
-        components: ['Link'],
-        specialLink: ['hrefLeft', 'hrefRight'],
-        aspects: ['invalidHref', 'preferButton']
+        components: ["Link"],
+        specialLink: ["hrefLeft", "hrefRight"],
+        aspects: ["invalidHref", "preferButton"]
       }
     ],
     "react/prop-types": 0,
-    "react/jsx-uses-vars": [
-      2
-    ],
+    "react/jsx-uses-vars": [2],
     "react/jsx-no-undef": "error",
     "no-console": 0,
-    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-unused-vars": ["error", { vars: "all", args: "after-used", ignoreRestSiblings: false }]
   }
 };
