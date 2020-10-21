@@ -1,36 +1,3 @@
-// module.exports = {
-//   extends: [require.resolve('@umijs/fabric/dist/eslint')],
-//   parserOptions: {
-//     ecmaVersion: 2020
-//   },
-//   rules: {
-//     "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
-//     "eslint-plugin/consistent-output": "error",
-//     "eslint-plugin/no-deprecated-context-methods": "error",
-//     "eslint-plugin/prefer-output-null": "error",
-//     "eslint-plugin/prefer-placeholders": "error",
-//     "eslint-plugin/report-message-format": ["error", "[^a-z].*\\.$"],
-//     "eslint-plugin/require-meta-docs-description": "error",
-//     "eslint-plugin/require-meta-type": "error",
-//     "eslint-plugin/test-case-property-ordering": [
-//       "error",
-//       [
-//         "filename",
-//         "code",
-//         "output",
-//         "options",
-//         "parser",
-//         "parserOptions",
-//         "globals",
-//         "env",
-//         "errors"
-//       ]
-//     ],
-//     "eslint-plugin/test-case-shorthand-strings": "error",
-//     "internal-rules/multiline-comment-style": "error"
-//   },
-// };
-
 module.exports = {
   root: true, // Make sure eslint picks up the config at the root of the directory
   parserOptions: {
@@ -58,6 +25,22 @@ module.exports = {
     "plugin:prettier/recommended" // Make this the last element so prettier config overrides other formatting rules
   ],
   rules: {
-    "prettier/prettier": ["error", {}, { usePrettierrc: true }] // Use our .prettierrc file as source
+    "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
+    'react/react-in-jsx-scope': 'off',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton']
+      }
+    ],
+    "react/prop-types": 0,
+    "react/jsx-uses-vars": [
+      2
+    ],
+    "react/jsx-no-undef": "error",
+    "no-console": 0,
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
   }
 };
