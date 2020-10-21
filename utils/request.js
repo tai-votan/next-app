@@ -16,7 +16,7 @@ const codeMessage = {
   500: "The server has an error. Please check the server",
   502: "Gateway error",
   503: "The service is unavailable, the server is temporarily overloaded or maintained",
-  504: "The gateway timed out",
+  504: "The gateway timed out"
 };
 const { NEXT_PUBLIC_API_URL } = process.env;
 
@@ -26,12 +26,12 @@ const errorHandler = ({ response }) => {
     const { status, url } = response;
     notification.error({
       message: `Yêu cầu lỗi ${status}: ${url}`,
-      description: errorText,
+      description: errorText
     });
   } else if (!response) {
     notification.error({
       description: "Mạng của bạn không bình thường và không thể kết nối với máy chủ",
-      message: "Mạng bất thường",
+      message: "Mạng bất thường"
     });
   }
 
@@ -41,7 +41,7 @@ const errorHandler = ({ response }) => {
 const request = extend({
   prefix: NEXT_PUBLIC_API_URL,
   errorHandler,
-  credentials: "same-origin",
+  credentials: "same-origin"
   // credentials: "include", // 默认请求是否带上cookie
 });
 export default request;

@@ -11,7 +11,7 @@ const _NEXT_DVA_STORE_ = "_NEXT_DVA_STORE_";
 function createDvaStore(initialState) {
   const app = dva({
     initialState,
-    ...createLoading(),
+    ...createLoading()
   });
   const isArray = Array.isArray(model);
   if (isArray) {
@@ -47,10 +47,10 @@ export default function withDva(...args) {
         Provider,
         // in client side, it will init store with the initial state tranfer from server side
         {
-          store: store && store.dispatch ? store : getOrCreateStore(initialState),
+          store: store && store.dispatch ? store : getOrCreateStore(initialState)
         },
         // transfer next.js's props to the page
-        React.createElement(ConnectedComponent, initialProps),
+        React.createElement(ConnectedComponent, initialProps)
       );
     };
     ComponentWithDva.getInitialProps = async (props = {}) => {
@@ -58,13 +58,11 @@ export default function withDva(...args) {
       const store = getOrCreateStore(props.req);
       // call children's getInitialProps
       // get initProps and transfer in to the page
-      const initialProps = Component.getInitialProps
-                           ? await Component.getInitialProps({ ...props, isServer, store })
-                           : {};
+      const initialProps = Component.getInitialProps ? await Component.getInitialProps({ ...props, isServer, store }) : {};
       return {
         store,
         initialProps,
-        initialState: store.getState(),
+        initialState: store.getState()
       };
     };
     return ComponentWithDva;

@@ -1,8 +1,11 @@
+const fabric = require('@umijs/fabric');
+
 module.exports = {
-  trailingComma: "all",
-  printWidth: 180,
-  proseWrap: "never",
+  ...fabric.prettier,
+  semi: true,
   tabWidth: 2,
+  printWidth: 180,
   singleQuote: false,
-  autoSave: true
+  trailingComma: "none",
+  jsxBracketSameLine: true
 };

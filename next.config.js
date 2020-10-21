@@ -7,18 +7,16 @@ const fs = require("fs");
 const path = require("path");
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
+  enabled: process.env.ANALYZE === "true"
 });
 
-const themeVariables = lessToJS(
-  fs.readFileSync(path.resolve(__dirname, "./styles/variable-style.less"), "utf8"),
-);
+const themeVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, "./styles/variable-style.less"), "utf8"));
 
 module.exports = withBundleAnalyzer(
   withLess({
     lessLoaderOptions: {
       javascriptEnabled: true,
-      modifyVars: themeVariables, // make your antd custom effective
+      modifyVars: themeVariables // make your antd custom effective
     },
     webpack: (config, { isServer }) => {
       if (isServer) {
@@ -33,25 +31,25 @@ module.exports = withBundleAnalyzer(
               callback();
             }
           },
-          ...(typeof origExternals[0] === "function" ? [] : origExternals),
+          ...(typeof origExternals[0] === "function" ? [] : origExternals)
         ];
 
         config.module.rules.unshift({
           test: antStyles,
-          use: "null-loader",
+          use: "null-loader"
         });
       }
 
       config.plugins.push(
         new AntdDayjsWebpackPlugin(),
         new FilterWarningsPlugin({
-          exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
-        }),
+          exclude: /mini-css-extract-plugin[^]*Conflicting order between:/
+        })
       );
 
       config.resolve.modules.push(__dirname);
 
       return config;
-    },
-  }),
+    }
+  })
 );

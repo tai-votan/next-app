@@ -3,7 +3,7 @@ import { latestArticle } from "services/home";
 const model = {
   namespace: "index",
   state: {
-    latest: [],
+    latest: []
   },
 
   effects: {
@@ -12,16 +12,16 @@ const model = {
       const { feature } = yield select(({ index }) => index);
       yield put({
         type: "save",
-        payload: { latest: feature.concat(data.docs) },
+        payload: { latest: feature.concat(data.docs) }
       });
-    },
+    }
   },
 
   reducers: {
     save(state, { payload }) {
       return { ...state, ...payload };
-    },
-  },
+    }
+  }
 };
 
 export default model;
