@@ -1,6 +1,6 @@
 import { latestArticle } from "services/home";
 
-const model = {
+const homepage = {
   namespace: "index",
   state: {
     latest: []
@@ -9,10 +9,10 @@ const model = {
   effects: {
     *fetchLastestArticle({ payload }, { call, put, select }) {
       const { data } = yield call(latestArticle, payload);
-      const { feature } = yield select(({ index }) => index);
+      const { latest } = yield select(({ index }) => index);
       yield put({
         type: "save",
-        payload: { latest: feature.concat(data.docs) }
+        payload: { latest: latest.concat(data.docs) }
       });
     }
   },
@@ -24,4 +24,4 @@ const model = {
   }
 };
 
-export default model;
+export default homepage;
