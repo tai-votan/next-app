@@ -40,6 +40,7 @@ module.exports = {
     "react/jsx-no-undef": "error",
     "no-console": 0,
     "@typescript-eslint/no-unused-vars": ["error"],
+    "import/no-unresolved": "off",
     "no-unused-vars": ["error", { vars: "all", args: "after-used", ignoreRestSiblings: false }]
   }
 };
