@@ -35,5 +35,6 @@ yarn-error.log*
 .idea
 
 *.lock
+yarn.lock
 package-lock.json
 *bak
