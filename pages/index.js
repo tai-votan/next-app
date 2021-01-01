@@ -105,7 +105,7 @@ class Home extends React.Component {
             </div>
           ))}
         </Spin>
-        <Button loading={loading["index/fetchLastestArticle"]} onClick={this.handleLoadMore}>
+        <Button type="primary" loading={loading["index/fetchLastestArticle"]} onClick={this.handleLoadMore}>
           Load
         </Button>
       </div>
