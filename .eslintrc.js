@@ -4,7 +4,8 @@ module.exports = {
     ecmaVersion: 2020, // Use the latest ecmascript standard
     sourceType: "module", // Allows using import/export statements
     ecmaFeatures: {
-      jsx: true // Enable JSX since we're using React
+      jsx: true, // Enable JSX since we're using React
+      modules: true
     }
   },
   settings: {
@@ -15,14 +16,17 @@ module.exports = {
   env: {
     browser: true, // Enables browser globals like window and document
     amd: true, // Enables require() and define() as global variables as per the amd spec.
-    node: true // Enables Node.js global variables and Node.js scoping.
+    node: true, // Enables Node.js global variables and Node.js scoping.
+    jest: true
   },
   extends: [
     require.resolve("@umijs/fabric/dist/eslint"),
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended" // Make this the last element so prettier config overrides other formatting rules
+    "plugin:prettier/recommended", // Make this the last element so prettier config overrides other formatting rules
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   rules: {
     "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
