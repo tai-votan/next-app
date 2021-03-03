@@ -19,7 +19,7 @@ class Home extends React.Component {
     const { pathname, query, isServer, store } = props;
     // dispatch effects to fetch data here
     await store.dispatch({
-      type: "index/fetchLastestArticle",
+      type: "index/fetchLatestArticle",
       payload: {
         language: "VN",
         limit: 6,
@@ -43,7 +43,7 @@ class Home extends React.Component {
     const { page } = this.state;
     this.setState({ page: page + 1 });
     dispatch({
-      type: "index/fetchLastestArticle",
+      type: "index/fetchLatestArticle",
       payload: {
         language: "VN",
         limit: 6,
@@ -92,7 +92,7 @@ class Home extends React.Component {
             cardType: "summary_large_image"
           }}
         />
-        <Spin spinning={loading["index/fetchLastestArticle"]}>
+        <Spin spinning={loading["index/fetchLatestArticle"]}>
           {latest.map(({ _id, title, slug }) => (
             <div key={_id}>
               <Link
@@ -105,7 +105,7 @@ class Home extends React.Component {
             </div>
           ))}
         </Spin>
-        <Button type="primary" loading={loading["index/fetchLastestArticle"]} onClick={this.handleLoadMore}>
+        <Button type="primary" loading={loading["index/fetchLatestArticle"]} onClick={this.handleLoadMore}>
           Load
         </Button>
       </div>

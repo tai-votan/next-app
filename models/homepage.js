@@ -7,7 +7,7 @@ const homepage = {
   },
 
   effects: {
-    *fetchLastestArticle({ payload }, { call, put, select }) {
+    *fetchLatestArticle({ payload }, { call, put, select }) {
       const { data } = yield call(latestArticle, payload);
       const { latest } = yield select(({ index }) => index);
       yield put({
