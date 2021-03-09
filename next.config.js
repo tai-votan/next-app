@@ -1,21 +1,25 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const withSass = require("@zeit/next-sass");
-const withLess = require("@zeit/next-less");
-const lessToJS = require("less-vars-to-js");
-const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
-const AntdDayjsWebpackPlugin = require("antd-dayjs-webpack-plugin");
+const withSass = require('@zeit/next-sass');
+const withLess = require('@zeit/next-less');
+const lessToJS = require('less-vars-to-js');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true"
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
 });
 
-const themeVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, "./styles/variable-style.less"), "utf8"));
+const themeVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, './styles/variable-style.less'), 'utf8'));
 
 module.exports = withBundleAnalyzer(
   withSass({
+    i18n: {
+      locales: ['en', 'vi'],
+      defaultLocale: 'vi'
+    },
     cssModules: true,
     ...withLess({
       lessLoaderOptions: {
@@ -31,18 +35,18 @@ module.exports = withBundleAnalyzer(
             // eslint-disable-next-line consistent-return
             (context, request, callback) => {
               if (request.match(antStyles)) return callback();
-              if (typeof origExternals[0] === "function") {
+              if (typeof origExternals[0] === 'function') {
                 origExternals[0](context, request, callback);
               } else {
                 callback();
               }
             },
-            ...(typeof origExternals[0] === "function" ? [] : origExternals)
+            ...(typeof origExternals[0] === 'function' ? [] : origExternals)
           ];
 
           config.module.rules.unshift({
             test: antStyles,
-            use: "null-loader"
+            use: 'null-loader'
           });
         }
 
