@@ -67,6 +67,7 @@
     "antd-dayjs-webpack-plugin": "1.0.6",
     "babel-plugin-import": "1.13.3",
     "cross-env": "7.0.3",
+    "dayjs": "1.10.4",
     "dotenv": "8.2.0",
     "dva-loading": "3.0.22",
     "dva-no-router": "1.2.1",
