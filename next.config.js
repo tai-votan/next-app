@@ -16,15 +16,16 @@ const themeVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, './style
 
 module.exports = withBundleAnalyzer(
   withSass({
-    i18n: {
-      locales: ['en', 'vi'],
-      defaultLocale: 'vi'
-    },
     cssModules: true,
     ...withLess({
       lessLoaderOptions: {
         javascriptEnabled: true,
         modifyVars: themeVariables // make your antd custom effective
+      },
+      i18n: {
+        locales: ['vi', 'en'],
+        defaultLocale: 'vi',
+        localeDetection: false
       },
       webpack: (config, { isServer }) => {
         if (isServer) {

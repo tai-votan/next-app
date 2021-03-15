@@ -1,8 +1,8 @@
-import request from "utils/request";
+import request from 'utils/request';
 
 export async function latestArticle(params) {
-  return request("/v2/latest-article", {
-    method: "GET",
+  return request('/v2/latest-article', {
+    method: 'GET',
     params
   });
 }

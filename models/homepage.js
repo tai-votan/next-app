@@ -1,7 +1,7 @@
-import { latestArticle } from "services/home";
+import { latestArticle } from 'services/home';
 
 const homepage = {
-  namespace: "index",
+  namespace: 'index',
   state: {
     latest: []
   },
@@ -11,7 +11,7 @@ const homepage = {
       const { data } = yield call(latestArticle, payload);
       const { latest } = yield select(({ index }) => index);
       yield put({
-        type: "save",
+        type: 'save',
         payload: { latest: latest.concat(data.docs) }
       });
     }

@@ -1,12 +1,12 @@
-import React from "react";
-import model from "models/index";
-import { Provider } from "react-redux";
-import createLoading from "dva-loading";
-import dva, { connect } from "dva-no-router";
+import React from 'react';
+import model from 'models/index';
+import { Provider } from 'react-redux';
+import createLoading from 'dva-loading';
+import dva, { connect } from 'dva-no-router';
 
-const checkServer = () => Object.prototype.toString.call(global.process) === "[object process]";
+const checkServer = () => Object.prototype.toString.call(global.process) === '[object process]';
 
-const _NEXT_DVA_STORE_ = "_NEXT_DVA_STORE_";
+const __NEXT_DVA_STORE__ = '__NEXT_DVA_STORE__';
 
 function createDvaStore(initialState) {
   const app = dva({
@@ -32,10 +32,10 @@ function getOrCreateStore(initialState) {
     // run in server
     return createDvaStore(initialState);
   }
-  if (!window[_NEXT_DVA_STORE_]) {
-    window[_NEXT_DVA_STORE_] = createDvaStore(initialState);
+  if (!window[__NEXT_DVA_STORE__]) {
+    window[__NEXT_DVA_STORE__] = createDvaStore(initialState);
   }
-  return window[_NEXT_DVA_STORE_];
+  return window[__NEXT_DVA_STORE__];
 }
 
 export default function withDva(...args) {

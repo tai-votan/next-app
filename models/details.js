@@ -1,7 +1,7 @@
-import { articleDetails } from "services/details";
+import { articleDetails } from 'services/details';
 
 const details = {
-  namespace: "details",
+  namespace: 'details',
   state: {
     details: {}
   },
@@ -10,7 +10,7 @@ const details = {
     *fetchArticleDetails({ payload }, { call, put }) {
       const { data } = yield call(articleDetails, payload);
       yield put({
-        type: "save",
+        type: 'save',
         payload: { details: data.docs[0] }
       });
     }

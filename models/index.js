@@ -1,5 +1,5 @@
-import homepage from "./homepage";
-import details from "./details";
+import homepage from './homepage';
+import details from './details';
 
 const model = [homepage, details];
 

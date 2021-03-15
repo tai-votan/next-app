@@ -25,8 +25,6 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended", // Make this the last element so prettier config overrides other formatting rules
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
   ],
   rules: {
     "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
@@ -43,7 +41,7 @@ module.exports = {
     "react/jsx-uses-vars": [2],
     "react/jsx-no-undef": "error",
     "no-console": 0,
-    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-underscore-dangle": 'off',
     "import/no-unresolved": "off",
     "no-unused-vars": ["error", { vars: "all", args: "after-used", ignoreRestSiblings: false }]
   }

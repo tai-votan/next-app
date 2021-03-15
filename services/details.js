@@ -1,4 +1,4 @@
-import request from "utils/request";
+import request from 'utils/request';
 
 export async function articleDetails(slug) {
   return request(`/v2/article-detail/${slug}`);
